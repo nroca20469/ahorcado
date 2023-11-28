@@ -1,0 +1,37 @@
+22/11/2023(Decapvespre a clase)
+HECHO:
+- Hacer html con css(como el ejemplo, tal vez despues se cambie)
+- Array con las palabras aleatorias
+- Empezar a capturar constantes i probar las letras se cogen por primera vez
+
+PARA HACER:
+- Acabar de capturar correctamente las letras
+- Hacer la funcion de palabra aleatoria
+- Capturar la palabra y pasarla para compararç
+
+23/11/2023(Vespre)
+HECHO:
+- Capturar correctamente las letras
+- Acabar el array de palabras aleatorias, probando con una sola palabra
+- Cambiar de color cuando este correctas e incorrectas
+
+PARA HACER:
+- Mirar como hacer el random en el array
+- Comparar las letras al array de letras
+- Correccion de q los intentos se sumen correctament, solo las incorrectas, no las correctas
+
+27/11/2023(Decapvespre a clase)
+HECHO:
+- Array con las palabras aleatorias hecho
+- Arreglado el indicador de intentos restantes
+- Empezado el cronometro marcha atras, no funciona, tiene solo la estructura basica
+
+PARA HACER:
+- Cronometro marcha atras, que funcione correctamente
+
+28/11/2023(Mati)
+HECHO:
+- Cronometro marcha atras acabado, se para cuando toca i se muestra el boton de reiniciar
+
+PARA HACER:
+- Preguntar lo del cornometro marcha atras por letra
