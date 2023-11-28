@@ -123,7 +123,6 @@ function guardarLletres(lletraIntent) {  // Guardar las palabras en el array de 
 
         if(arrayIntent[index] != '-') {  //Si ya es correcta, el contador de correctas, suma una por cada uno
             contadoCorrectes ++;
-            console.log('Correctes: ' + contadoCorrectes);
         }
 
     });
