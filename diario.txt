@@ -35,3 +35,7 @@ HECHO:
 
 PARA HACER:
 - Preguntar lo del cornometro marcha atras por letra
+
+28/11/2023(Decapvespre)
+HECHO:
+- Habia un problema con el vronometro al clicar en reiniciar

@@ -7,123 +7,107 @@ Reloj que va avanzando
 Array de x palabras, coge una al azar, ependiendo de la categoria/tematica.
 */
 
-//Guardar valores en variables
+//VARIABLES
 const arrayParaules = ['hola', 'adeu', 'daw', 'estetoscopio', 'microscopio', 'ordenador', 'romano', 'casa'];
-const arrayLletres = document.querySelectorAll('.lletra');
 
+//Letras + palabra que se mostrara por pantalla
+const arrayLletres = document.querySelectorAll('.lletra');
 const lletres = document.getElementById('lletres');
 const paraula = document.getElementById('paraula');
+
+//Mostrar por pantalla(son numeros(contadores))
 const intents = document.getElementById('intents');
 const errors = document.getElementById('errors');
+
+//Cronometro
 const cronometro = document.getElementById('cronometro');  //Cronometro
 
-
+//Botones
 const btnComenzar = document.getElementById('empezar');
 const btnReintentar = document.getElementById('reintentar');
 const acabat = document.getElementById('acabat');
 
+//Variables globales para ir usando y cambiando
 let arrayParaula;
 let arrayIntent;
 let contadoCorrectes; 
 let cuentaAtras;
 let partidaAcabada = false;
+
 //Temporizador general
 let fecha = new Date();
-fecha.setHours(0,1,0,0); //1 min
-let horas = fecha.getHours();
-let minutos = fecha.getMinutes();
-let segundos = fecha.getSeconds();
 cronometro.innerHTML = '00' + ":" + '01' + ":" + '00';
 
 
-
-//Funcions
-function paraulaRandom() {
-   // console.log(arrayParaules.length);
+//FUNCTIONS
+function paraulaRandom() {  //Elige la palabra de manera random
     let random = Math.floor(Math.random() * (arrayParaules.length));
-    let palabra = arrayParaules[random];
-    separarParaula(palabra);
+    let palabra = arrayParaules[random];  //Guardar palabra en una variable
+
+    separarParaula(palabra); //Separar palabra en un array
 }
 
-function empezarCronometro() {
-    cuentaAtras = setInterval(cronometroFunction, 1000);
-    console.log("Cuenta atras: " + cuentaAtras);
-   
+function empezarCronometro() {  //Empieza el cornometro
+    fecha.setHours(0,1,0,0); //Poner el tiempo a 1 minuto
+
+    horas = fecha.getHours(); //Guardar los valores
+    minutos = fecha.getMinutes();
+    segundos = fecha.getSeconds(); 
+
+    cronometro.innerHTML = '00' + ":" + '01' + ":" + '00'; //Empezar con el minuto
+
+    cuentaAtras = setInterval(cronometroFunction, 1000); //Empezar con el intervalo cada segundo
 }
 
-function cronometroFunction() {
+function cronometroFunction() { //Es el cronometro en si(como el interior)
 
-    // console.log('Si pasa');
+    if(!partidaAcabada) { //Si  o ha acabado la partida, que siga corriendo el timepo
         if(minutos == 0 && horas == 0 && segundos == 0 ) {
-            // clearInterval(cuentaAtras);
             cronometro.innerHTML = '00' + ":" + '00' + ":" + '00';
             partidaAcabada = true;   
         } else {
             segundos = segundos % 60;
-            // console.log(segundos);
-    
-           /* if (minutos ===0 && segundos ===0){
-                alert ("Se agotó su tiempo");
-                partidaAcabada = true;
-                clearTimeOut(llamada);
-            }*/
-    
-           /* if(minutos == 0 && segundos != 0 && horas != 0){
-                minutos = 60;
-                horas -= 1;
-    
-                fecha.setHours(horas);
-            }
-    
-            if(segundos == 0 && minutos != 0 && horas != 0 ){
-                minutos -= 1;
-                segundos = 60;
-                fecha.setMinutes(minutos); 
-            }*/
     
             if (segundos == 0){
                 minutos --;  //Bajar el minuto
                 segundos += 60;   //Bajar a 60 los segunods
             }
-    
-            segundos--;  
-        
-    }
-    
-        if(horas < 10 && horas !== '00') { horas = "0" + horas; }
-        if(minutos < 10 && minutos !== '00'){ minutos = "0" + minutos; }
-        if(segundos < 10 && segundos !== '00'){ segundos = "0" + segundos; }      // console.log(segundos);
-
-        fecha.setSeconds(segundos);
-        cronometro.innerText = horas + ":" + minutos + ":" +segundos;
-
-        if(partidaAcabada) {
-            acabat.style.display = "block";
-            btnReintentar.style.display = "inline";
-            lletres.style.cursor = 'default';
+            segundos--;  //Bajar los segundos en cada pasada
         }
+    }
+
+    //Si son menores que 10 cada uno i no tienen el 00 escrito en strin, se cambiara, sino no(ya que se van añadiendo los ceros y se vuelve imposible leer XD)
+    if(horas < 10 && horas !== '00') { horas = "0" + horas; }
+    if(minutos < 10 && minutos !== '00'){ minutos = "0" + minutos; }
+    if(segundos < 10 && segundos !== '00'){ segundos = "0" + segundos; }
+
+    fecha.setSeconds(segundos);  //Cambiar los segundos
+    cronometro.innerText = horas + ":" + minutos + ":" +segundos;
+
+    if(partidaAcabada) {  //Si la partida ha acabado, que acabe todo
+        acabar();
+    }
 
 }
 
-function separarParaula(paraulaSeparada) {
+function separarParaula(paraulaSeparada) { //Funcion que separa la palabra en array, y la convierte 1 en array i 2 en un array de intentos ('-')
     arrayParaula = paraulaSeparada.split('');
     arrayIntent = new Array(arrayParaula.length);
 
     arrayIntent.fill('-');
-    // console.log(arrayIntent);
 
-    actualizarPalabra();
+    actualizarPalabra();  //Actualizar el div de palabra
 }
 
-function actualizarPalabra() {
-    paraula.innerText = "";
+function actualizarPalabra() { //Actualiza el div con id de palabra, por la palabra que aparezca(i con las letras, a medida que vayan apareciendo)
+     paraula.innerText = "";
     
     arrayIntent.forEach((lletra) => {
         paraula.innerText += " " + lletra;
     });  
 }
 
-function guardarLletres(lletraIntent) {
+function guardarLletres(lletraIntent) {  // Guardar las palabras en el array de intento, i cuenta el numero de correctas e incorrectas.
     let minuscula = lletraIntent.toLowerCase();
 
     let correcte = false;
@@ -133,41 +117,44 @@ function guardarLletres(lletraIntent) {
     arrayParaula.forEach((lletra, index)=> {
 
         if(lletra == minuscula || lletra == lletraIntent) {
-            arrayIntent[index] = lletra;
+            arrayIntent[index] = lletra;  //Cambiua el '-' por la letra correcta
             correcte = true;
         }
 
-        if(arrayIntent[index] != '-') {
+        if(arrayIntent[index] != '-') {  //Si ya es correcta, el contador de correctas, suma una por cada uno
             contadoCorrectes ++;
             console.log('Correctes: ' + contadoCorrectes);
         }
-  
+
     });
    
-    if(correcte) {
+    if(correcte) {  //Si es correcta ser actualiza y devuelve que si
         actualizarPalabra();
         return correcte;
-    } else {
+    } else {  //Sino actualiza el contador de errores y devuelve que no
         errors.innerText++;
         return correcte;
     }
 }
 
-function lavarLetras() {
-    let letra;
+function lavarLetras() {  //Lavar las letras una vez finalizada la partida(i clicada reiniciar)
     lletres.childNodes.forEach((lletra) => {
 
         if(lletra.className == 'lletra incorrecte' || lletra.className == 'lletra correcte' ) {
-            lletra.className = 'lletra'
-            console.log(lletra.className);
+            lletra.className = 'lletra'  //Cambiamos el noombre de la clase a 'lletra'
         }
 
     });
-    console.log(lletres.childNodes);
+}
+
+function acabar() {  //Una vez acabado el juego mostrar por pantalla
+    acabat.style.display = "block";
+    btnReintentar.style.display = "inline";
+    lletres.style.cursor = 'default';
 }
 
 
-//Events
+//EVENTS
 btnComenzar.addEventListener('click', (e)=> {
     intents.innerHTML = 7;
     errors.innerHTML = 0;
@@ -176,9 +163,6 @@ btnComenzar.addEventListener('click', (e)=> {
 
     paraulaRandom();
     btnComenzar.style.display="none";
-    //CAMBIAR CURSOR UNA VEZ EMPEZADO EL JUEGO Y QUE ANTES NO PUEDAN CLICAR
-
-    
 }); 
 
 btnReintentar.addEventListener('click', (e) => {
@@ -188,49 +172,37 @@ btnReintentar.addEventListener('click', (e) => {
     contadoCorrectes = 0; 
     intents.innerHTML = 7;
     errors.innerHTML = 0;
-    clearInterval(cuentaAtras);
-    empezarCronometro();
-
-    paraulaRandom();
-
     btnComenzar.style.display="none";
     btnReintentar.style.display = "none";
     acabat.style.display = "none";
     partidaAcabada = false;
+
+    clearInterval(cuentaAtras);
+    empezarCronometro();
+    paraulaRandom();
 })
 
-// do {
-    
-lletres.addEventListener('click', (e) => {
-    // console.log(typeof e.target.classList.value);
+
+lletres.addEventListener('click', (e) => {   //Al clicar en la leltra, se guardara la letra y se mostrara su color correspoiente
+
     if(btnComenzar.style.display == "none" && e.target.classList.value != 'lletres') {
-        // console.log('my fault');
-            if(e.target.classList.value != 'lletra incorrecte' && e.target.classList.value != 'lletra correcte') { 
-                let lletreCorIncor = guardarLletres(e.target.innerHTML);
-                console.log(e.target.classList.value);
+        if(e.target.classList.value != 'lletra incorrecte' && e.target.classList.value != 'lletra correcte') { 
+            let lletreCorIncor = guardarLletres(e.target.innerHTML);
 
-                if(lletreCorIncor) {
-                    e.target.classList.add('correcte');
-                } else {
-                    e.target.classList.add('incorrecte');
-
-                }
-                
-                // console.log(e.target.classList);
-                // intents = 8-(+intents.innerHTML+1);
-                
-                intents.innerText = 7-errors.innerHTML ;
-                console.log(intents.innerHTML);
-
-                if(errors.innerHTML == 7) {
-                    partidaAcabada = true;
-                } else if(contadoCorrectes == arrayIntent.length) {
-                    partidaAcabada = true;
-                }
+            if(lletreCorIncor) {
+                e.target.classList.add('correcte');
+            } else {
+                e.target.classList.add('incorrecte');
             }
+                            
+            intents.innerText = 7-errors.innerHTML ;
+
+            if(errors.innerHTML == 7) {
+                partidaAcabada = true;
+            } else if(contadoCorrectes == arrayIntent.length) {
+                partidaAcabada = true;
+            }
+        }
     }
     
 });
-
-
-// } while(partidaAcabada == false);
