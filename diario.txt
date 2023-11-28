@@ -38,4 +38,10 @@ PARA HACER:
 
 28/11/2023(Decapvespre)
 HECHO:
-- Habia un problema con el vronometro al clicar en reiniciar
+- Habia un problema con el cronometro al clicar en reiniciar
+- Lavado el codigo y comentado
+- Subido a github como 1a fase finalizada
+- Cambiado la interficie
+
+PARA HACER: 
+- Probar de añadir el localStorage

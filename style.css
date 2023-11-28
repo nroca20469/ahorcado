@@ -6,13 +6,18 @@
 }
 
 body {
-    background-color: #131b4a;
+    background-color: #4C2E10;
     text-align: center;
 }
 
 div {
-    color: #e6eafc;
+    color: #E7B888;
     font-family: 'Lato', sans-serif;
+}
+
+.lletra {
+    color: #4C2E10;
+    font-weight: 600;
 }
 
 #contenido-principal {
@@ -22,8 +27,12 @@ div {
     /* text-align: center; */
 }
 
+#joc-penjat {
+    text-align: center;
+}
+
 #intents {
-    color: #7ddaf6;
+    color: #88e7c1;
 }
 
 /* #lletres {
@@ -51,10 +60,22 @@ p {
     height: 40px;
 }
 
+.cronos {
+    width: 40%;
+    padding-inline: 30%;
+}
+
+#crono, #cronoLetra {
+    width: 48%;
+    float: left;
+}
 
 #empezar, #reintentar{
     cursor: pointer;
-    background-color: #7084f4;
+    color: #4C2E10;
+    background-color: #E7B888;
+    border-radius: 5px;
+    box-shadow: #987859;
     width: 100px;
     padding: 10px;
     margin: 20px;
@@ -83,8 +104,9 @@ p {
     font-size: 20px;
     height: 30px;
     margin: 5px;
+    border-radius: 5px;
     text-align: center;
-    background-color: #3a4060;
+    background-color: #E7B888;
 } 
 
 .lletra:hover {
@@ -100,9 +122,11 @@ p {
 .lletra.correcte {
     background-color: #368236;
     cursor: default;
+    color: #E7B888;
 }
 
 .lletra.incorrecte {
-    background-color: #823636;
+    background-color: #f53434;
     cursor: default;
+    color: #E7B888;
 }
