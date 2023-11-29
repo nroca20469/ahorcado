@@ -45,3 +45,13 @@ HECHO:
 
 PARA HACER: 
 - Probar de añadir el localStorage
+
+29/11/2023(Tarde)
+HECHO:
+- Acabado fase 2
+- Hecho local storage --> añadir, comparar y actualizar
+- Arreglado un problema con los cronometros al reiniciar partida(no se mostraban, ahora si)
+
+PARA HACER:
+- Empezar fase 3
+- Mirar como hacer el select con los temas(al ser con json se explicara a clase)
