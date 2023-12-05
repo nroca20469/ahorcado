@@ -55,3 +55,7 @@ HECHO:
 PARA HACER:
 - Empezar fase 3
 - Mirar como hacer el select con los temas(al ser con json se explicara a clase)
+
+04/12/2023(Tarde)
+HECHO:
+- Coreccion de una pequeña falla(no se reiniciaba o paraba cuando se acababa), era una sola linia, sacada y ya funciona correctamente

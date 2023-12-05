@@ -88,7 +88,7 @@ function cronometroFunction() { //Es el cronometro en si(como el interior)
         }
     }
 
-    //Si son menores que 10 cada uno i no tienen el 00 escrito en strin, se cambiara, sino no(ya que se van añadiendo los ceros y se vuelve imposible leer XD)
+    //Si son menores que 10 cada uno i no tienen el 00 escrito en string, se cambiara, sino no(ya que se van añadiendo los ceros y se vuelve imposible leer XD)
     if(horas < 10 && horas !== '00') { horas = "0" + horas; }
     if(minutos < 10 && minutos !== '00'){ minutos = "0" + minutos; }
     if(segundos < 10 && segundos !== '00'){ segundos = "0" + segundos; }
@@ -219,12 +219,14 @@ function guardarLocal(palabra, nerrores, tempstotal) {  //Funcion para guardar e
     
     let buscar = buscarLocal(palabra);  //Miramos si la palabvra ya esta en localStorages
 
+    let json = [nerrores, tempsTotal]; //Guaradmos en un array, para despues tenerlo ordenado
+
+
     if(buscar != null) {  //Si esta
 
         let compErrores = compararErrors(buscar, nerrores);  //Comparamos el numero de errores
         let compTotal = compararTiempo(buscar, tempsTotal);   //Comparar el tiempo empleado
-        let json; //Guaradmos en un array, para despues tenerlo ordenado
-
+        json = null;
         if(compErrores || compTotal) {
             if(compErrores || compTotal) {
                 json = [nerrores, tempsTotal];
