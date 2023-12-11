@@ -34,6 +34,39 @@ p {
     margin: 10%;
 }
 
+#contenido-principal select {
+    background-color: #E7B888;
+    color: #4C2E10;
+    margin: 5px;
+    padding: 5px;
+}
+
+option:checked {
+    background-color: #4C2E10;
+    color: #E7B888;
+}
+
+/* select option:hover {
+    box-shadow: 0 0 10px 100px green inset;
+    color:white;
+  }
+select option:checked{
+    box-shadow: 0 0 10px 100px green inset;
+    } */
+  
+
+/* 
+select:focus > option:hover {
+    background-color: yellow;
+  } */
+/* 
+option:hover {
+    /* background-color: #4C2E10 !important;
+    color: #E7B888; 
+    box-shadow: 0 0 10px 100px #1882A8 inset;
+
+} */
+
 #joc-penjat {
     text-align: center;
 }

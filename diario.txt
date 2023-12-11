@@ -59,3 +59,10 @@ PARA HACER:
 04/12/2023(Tarde)
 HECHO:
 - Coreccion de una pequeña falla(no se reiniciaba o paraba cuando se acababa), era una sola linia, sacada y ya funciona correctamente
+
+11/12/2023(Tarde)
+HECHO:
+- Arrays con diferentes categorias
+- Implementacion del select-option de categoria
+- Funcionamento general correcto(hecho comprobación)
+- Subir fase final

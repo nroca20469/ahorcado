@@ -1,4 +1,4 @@
-/*7 errores
+    /*7 errores
 funciona con el teclado de la pantalla
 Error es em rojo el boton
 Correcto es verde en el botonEl marcador va contando el nº de errores restantes
@@ -8,13 +8,19 @@ Array de x palabras, coge una al azar, ependiendo de la categoria/tematica.
 */
 
 //VARIABLES
-const arrayParaules = ['hola', 'adeu', 'daw', 'estetoscopio', 'microscopio', 'ordenador', 'romano', 'casa'];
+//const arrayParaules = ['hola', 'adeu', 'daw', 'estetoscopio', 'microscopio', 'ordenador', 'romano', 'casa'];
+const coches = ['renault', 'seat', 'ford', 'fiat', 'dacia', 'opel', 'volkswagen', 'ferrari', 'jeep'];
+const deportes = ['backetball', 'football', 'rugby', 'skateboard', 'tenis', 'gimnasia'];
+const anime = ['haikyuu', 'bleach', 'another', 'anohana', 'naruto'];
+const historia = ['darwin', 'aristoteles', 'napoleon', 'cesar', 'platon', 'einstein', 'washington', 'shakespeare'];
+const planetas = ['mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno'];
+const tabla = ['litio', 'calcio', 'azufre', 'sodio', 'estroncio', 'selenio', 'potasio', 'bario', 'telurio', 'hidrogeno']
 
 //Letras + palabra que se mostrara por pantalla
 const arrayLletres = document.querySelectorAll('.lletra');
 const lletres = document.getElementById('lletres');
 const paraula = document.getElementById('paraula');
-// console.log(paraula.innerHTML);
+const categoria = document.getElementById('categoria');
 
 //Mostrar por pantalla(son numeros(contadores))
 const intents = document.getElementById('intents');
@@ -30,6 +36,7 @@ const btnReintentar = document.getElementById('reintentar');
 const acabat = document.getElementById('acabat');
 
 //Variables globales para ir usando y cambiando
+let cat = "";
 let arrayParaula;
 let arrayIntent;
 let contadoCorrectes; 
@@ -53,8 +60,29 @@ document.querySelector('.cronos').style.display = "none";
 
 //FUNCTIONS
 function paraulaRandom() {  //Elige la palabra de manera random
-    let random = Math.floor(Math.random() * (arrayParaules.length));
-    let palabra = arrayParaules[random];  //Guardar palabra en una variable
+    let random;
+    let palabra;
+    if(cat != "") {
+        if(cat == 'anime') {
+            random = Math.floor(Math.random() * (anime.length));
+            palabra = anime[random];
+        } else if (cat == 'coches') {
+            random = Math.floor(Math.random() * (coches.length));
+            palabra = coches[random];
+        } else if (cat == 'deportes') {
+            random = Math.floor(Math.random() * (deportes.length));
+            palabra = deportes[random];
+        } else if (cat == 'historia') {
+            random = Math.floor(Math.random() * (historia.length));
+            palabra = historia[random];
+        } else if (cat == 'planetas') {
+            random = Math.floor(Math.random() * (planetas.length));
+            palabra = planetas[random];
+        } else if (cat == 'tabla') {
+            random = Math.floor(Math.random() * (tabla.length));
+            palabra = tabla[random];
+        }
+    }
 
     separarParaula(palabra); //Separar palabra en un array
 }
@@ -382,3 +410,7 @@ lletres.addEventListener('click', (e) => {   //Al clicar en la leltra, se guarda
     }
 
 });
+
+categoria.addEventListener('change', (e) => {
+    cat = e.target.value;
+})
